@@ -248,6 +248,9 @@ class RowsEvent(BinLogEvent):
         if column.character_set_name is not None:
             #encoding = self.charset_to_encoding(column.character_set_name)
             encoding = chardet.detect(string)["encoding"]
+            print("=======================================")
+            print(encoding)
+            print("=======================================")
             string = string.decode(encoding)
         return string
 
