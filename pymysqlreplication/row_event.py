@@ -4,6 +4,7 @@ import struct
 import decimal
 import datetime
 import json
+import chardet
 
 from pymysql.charset import charset_by_name
 
@@ -246,7 +247,7 @@ class RowsEvent(BinLogEvent):
         string = self.packet.read_length_coded_pascal_string(size)
         if column.character_set_name is not None:
             #encoding = self.charset_to_encoding(column.character_set_name)
-            encoding = "utf-8"
+            encoding = chardet.detect(string)["encoding"]
             string = string.decode(encoding)
         return string
 
