@@ -249,7 +249,7 @@ class RowsEvent(BinLogEvent):
             try:
                 encoding = self.charset_to_encoding(column.character_set_name)
                 string = string.decode(encoding)
-            catch:
+            except:
                 string = string.decode("utf-8")
         return string
 
