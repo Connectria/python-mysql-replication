@@ -248,11 +248,12 @@ class RowsEvent(BinLogEvent):
         if column.character_set_name is not None:
             #encoding = self.charset_to_encoding(column.character_set_name)
             print("=======================================")
-            print(column.character_set_name)
-            encoding = chardet.detect(bytes(string, column.character_set_name))
-            print(encoding)
-            print("=======================================")
-            string = string.decode(encoding["encoding"])
+#            print(column.character_set_name)
+#            encoding = chardet.detect(bytes(string, column.character_set_name))
+#            print(encoding)
+#            print("=======================================")
+#            string = string.decode(encoding["encoding"])
+            string = string.decode("utf-8")
         return string
 
     def __read_bit(self, column):
